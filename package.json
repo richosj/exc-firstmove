@@ -6,7 +6,8 @@
     "dev": "vite --mode localdev",
     "dev:remote": "vite --mode dev",
     "build": "vite build --mode production",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",

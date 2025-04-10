@@ -8,10 +8,11 @@ import ViteRestart from 'vite-plugin-restart'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
+  const isProd = mode === 'production'
 
   return {
     root: 'src',
-    base: '/',
+    base: isProd ? '/exc-firstmove/' : '/',
     publicDir: '../public',
     build: {
       outDir: '../dist',

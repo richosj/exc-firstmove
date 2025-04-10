@@ -1,5 +1,53 @@
-*{box-sizing: border;}
-body{
+
+:root{
+    --color-white: #fff;
+    
+}
+
+/* Reset styles */
+* {
     margin: 0;
     padding: 0;
-}
+    box-sizing: border-box;
+  }
+  
+  body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, figcaption, blockquote, dl, dd {
+    margin: 0;
+    padding: 0;
+    font-family: "Hyundai Sans Text KR";
+  }
+  
+  body,th,td,input,select,textarea,button{
+    font-size: 14px;
+  }
+  
+  ul, ol {
+    list-style: none;
+  }
+  
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+    //display: block;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  /* Font settings */
+  body {
+    font-family: 'Hyundai Sans Text KR', sans-serif;
+  }
+  
