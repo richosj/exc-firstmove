@@ -8,14 +8,20 @@ import ViteRestart from 'vite-plugin-restart'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const isProd = mode === 'production'
+  const isGhPages = mode === 'ghpages'
+  const isLocalBuild = mode === 'localbuild'
+  const projectName = 'exc-firstmove'
 
   return {
     root: 'src',
-    base: isProd ? '/exc-firstmove/' : '/',
+    base: isGhPages
+    ? '/'+projectName+'/'
+    : isLocalBuild
+    ? './'
+    : '/',
     publicDir: '../public',
     build: {
-      outDir: '../dist',
+      outDir: isGhPages ? '../dist' : isLocalBuild ? '../build' : '../dist',
       emptyOutDir: true,
       rollupOptions: {
         input: Object.fromEntries(

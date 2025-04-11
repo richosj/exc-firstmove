@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite --mode localdev",
     "dev:remote": "vite --mode dev",
-    "build": "vite build --mode production",
+    "build:pages": "vite build --mode ghpages",
+    "build:local": "vite build --mode localbuild",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
   },
