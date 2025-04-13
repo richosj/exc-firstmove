@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Mobile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Mobile Move Contents" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="google" content="notranslate" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Mobile" />
+    
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
+  <script type="module" crossorigin src="/exc-firstmove/assets/main-ChZE2zD0.js"></script>
+  <link rel="stylesheet" crossorigin href="/exc-firstmove/assets/css/style.css">
+</head>
+<body>
+    <header class="page-header">
+        <div class="page-header-container">
+            <a href="#" class="btn-back"></a>
+            <h1>일지 작성</h1>
+
+            <a href="#" class="btn-modify"></a>
+        </div>
+    </header>
+
+    <main class="main-log">
+        <div class="main-log-write">
+            <div class="write-textarea">
+                <textarea name="" id="limited-textarea" placeholder="내용을 입력해주세요." maxlength="100"></textarea>
+                <div class="write-textarea-footer">
+                <div class="write-textarea-footer-left">
+                    <i class="icon-image"></i>
+                    <span class="icon-label">사진</span>
+                </div>
+                <div class="write-textarea-footer-right">
+                    <div class="limited-count"><b class="count">0</b>/100</div>
+                </div>
+            </div>
+            <div class="write-footer">
+                <button class="btn-cancel">취소</button>
+                <button class="btn-write">작성완료</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const textarea = document.getElementById('limited-textarea');
+        const countDisplay = document.querySelector('.limited-count .count');
+
+        textarea.addEventListener('input', () => {
+            const length = textarea.value.length;
+            countDisplay.textContent = length;
+        });
+    </script>
+</body>
+</html>
