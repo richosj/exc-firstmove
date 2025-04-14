@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    {{> meta}}
+</head>
+<body>
+    <header class="page-header">
+        <div class="page-header-container">
+            <a href="#" class="btn-back"></a>
+            <h1>일지 작성</h1>
+
+            <a href="#" class="btn-modify"></a>
+        </div>
+    </header>
+
+    <main class="main-log">
+        <div class="main-log-write">
+            <div class="write-textarea">
+                <textarea name="" id="limited-textarea" placeholder="내용을 입력해주세요." maxlength="100"></textarea>
+                <div class="write-textarea-footer">
+                <div class="write-textarea-footer-left">
+                    <i class="icon-image"></i>
+                    <span class="icon-label">사진</span>
+                </div>
+                <div class="write-textarea-footer-right">
+                    <div class="limited-count"><b class="count">0</b>/100</div>
+                </div>
+            </div>
+            <div class="write-footer">
+                <button class="btn-cancel">취소</button>
+                <button class="btn-write">작성완료</button>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="/js/main.js"></script>
+    <script>
+        const textarea = document.getElementById('limited-textarea');
+        const countDisplay = document.querySelector('.limited-count .count');
+
+        textarea.addEventListener('input', () => {
+            const length = textarea.value.length;
+            countDisplay.textContent = length;
+        });
+    </script>
+</body>
+</html>

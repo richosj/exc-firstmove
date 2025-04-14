@@ -20,5 +20,8 @@
     "vite": "^6.2.5",
     "vite-plugin-handlebars": "^2.0.0",
     "vite-plugin-restart": "^0.4.2"
+  },
+  "dependencies": {
+    "gh-pages": "^6.3.0"
   }
 }

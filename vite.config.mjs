@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
     base: isGhPages
     ? '/'+projectName+'/'
     : isLocalBuild
-    ? './'
+    ? ''
     : '/',
     publicDir: '../public',
     build: {
@@ -37,20 +37,28 @@ export default defineConfig(({ mode }) => {
             return 'assets/[name]';
           }
         }
-      }
+      },
+      minify: isLocalBuild ? false : 'esbuild'
     },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src'),
       },
     },
-    css: {
-      preprocessorOptions: {
-        scss: {
-          //additionalData: `@import "@/scss/reset.scss";`,
-        },
-      },
-    },
+    // css: {
+    //   preprocessorOptions: {
+    //     scss: {
+    //       additionalData: (content, filename) => {
+    //         const imagePath =
+    //           mode === 'localbuild'
+    //             ? '../images'
+    //             : '/assets/images';
+    //         return `$image-path: '${imagePath}';\n${content}`;
+    //       }
+          
+    //     },
+    //   },
+    // },
     server: {
       watch: {
         ignored: ['!**/src/**', '!**/public/**'],
