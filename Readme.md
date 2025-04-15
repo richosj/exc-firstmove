@@ -36,7 +36,7 @@ build/ → 디자이너 등에게 전달할 HTML+CSS+JS
 
 # GitHub Pages에 배포
 npm run deploy
-배포 주소: https://yourname.github.io/exc-firstmove/
+배포 주소: https://yourname.github.io/레포명 ex(exc-firstmove)/
 
 .env.devlocal
 로컬 개발용 (localhost API)
@@ -51,6 +51,8 @@ npm run deploy
 
 VITE_API_URL=http://localhost:3000
 VITE_IMAGE_PATH=/assets/images
+
+이미지의 경우 bulid 상태에 따라 scss변수명 수정
 
 기타
 

@@ -1,5 +1,6 @@
 // vite.config.mjs
 import glob from 'fast-glob'
+import fs from 'fs'
 import path from 'path'
 import { defineConfig, loadEnv } from 'vite'
 import handlebars from 'vite-plugin-handlebars'
@@ -12,6 +13,41 @@ export default defineConfig(({ mode }) => {
   const isLocalBuild = mode === 'localbuild'
   const projectName = 'exc-firstmove'
 
+  const pagesPath = path.resolve(__dirname, 'src/pages')
+
+  // ✅ 이게 먼저 있어야 함
+  const pageFiles = fs.readdirSync(pagesPath)
+    .filter(file => file.endsWith('.html') && file !== 'link-page.html')
+
+  // ✅ 그 다음에 이걸 써야 함
+  const pageMetaList = pageFiles.map(file => {
+    const filePath = path.join(pagesPath, file)
+    const content = fs.readFileSync(filePath, 'utf-8')
+
+    const lines = content.split('\n').slice(0, 10)
+    
+    const meta = {}
+
+    lines.forEach(line => {
+      //const match = line.match(/@(\w+)\s+(.*)/)
+      const match = line.match(/@(\w+)\s+(.+?)\s*-->/)
+      if (match) {
+        const [, key, value] = match
+        meta[key] = value.trim()
+      }
+    })
+
+    return {
+      name: file,
+      title: meta.pageTitle || path.basename(file, '.html'),
+      note: meta.pageNote || '',
+      created: meta.pageCreated || '',
+      updated: meta.pageUpdated || ''
+    }
+  })
+
+
+  
   return {
     root: 'src',
     base: isGhPages
@@ -45,20 +81,6 @@ export default defineConfig(({ mode }) => {
         '@': path.resolve(__dirname, 'src'),
       },
     },
-    // css: {
-    //   preprocessorOptions: {
-    //     scss: {
-    //       additionalData: (content, filename) => {
-    //         const imagePath =
-    //           mode === 'localbuild'
-    //             ? '../images'
-    //             : '/assets/images';
-    //         return `$image-path: '${imagePath}';\n${content}`;
-    //       }
-          
-    //     },
-    //   },
-    // },
     server: {
       watch: {
         ignored: ['!**/src/**', '!**/public/**'],
@@ -67,6 +89,9 @@ export default defineConfig(({ mode }) => {
     plugins: [
       handlebars({
         partialDirectory: path.resolve(__dirname, 'src/components'),
+        context: {
+          pages: pageMetaList
+        }
       }),
       ViteRestart({
         restart: ['vite.config.mjs', 'src/scss/reset.scss'],
