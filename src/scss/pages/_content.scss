@@ -2,9 +2,15 @@
 @use '../utils/functions' as *;
 @use '../utils/mixins' as *;
 
+body:has(.tabnav){
+    .main-log{
+        height: calc(100dvh - 13rem );
+    }
+}
+
 .main-log{
     //padding-top: 7rem;
-    height: calc(100dvh - 7rem);
+    height: calc(100dvh - 9rem);
     &:has(.main-log-empty){
         display: flex;
         align-items: center;
@@ -165,6 +171,8 @@
             font-size: 1.4rem;
             color: #1B1B1B;
             outline: 0;
+            resize: none;
+            width: 100%;
             &::placeholder{
                 color: #979797;
             }
